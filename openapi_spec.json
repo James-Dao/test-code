@@ -1,0 +1,1628 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "E-Commerce API",
+    "version": "1.0.0",
+    "description": "电商系统API接口文档"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000",
+      "description": "开发服务器"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "summary": "create_user",
+        "operationId": "create_user",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserCreateRequest"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "get_all_users",
+        "operationId": "get_all_users",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "get_user",
+        "operationId": "get_user",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      },
+      "put": {
+        "summary": "update_user",
+        "operationId": "update_user",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserUpdateRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "delete_user",
+        "operationId": "delete_user",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "删除成功"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/users/username/{id}": {
+      "get": {
+        "summary": "get_user_by_username",
+        "operationId": "get_user_by_username",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/users/email/{id}": {
+      "get": {
+        "summary": "get_user_by_email",
+        "operationId": "get_user_by_email",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/users/{id}/password": {
+      "put": {
+        "summary": "change_password",
+        "operationId": "change_password",
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePasswordRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/categories": {
+      "post": {
+        "summary": "create_category",
+        "operationId": "create_category",
+        "tags": [
+          "Categories"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryCreateRequest"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "get_all_categories",
+        "operationId": "get_all_categories",
+        "tags": [
+          "Categories"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        }
+      }
+    },
+    "/categories/{id}": {
+      "get": {
+        "summary": "get_category",
+        "operationId": "get_category",
+        "tags": [
+          "Categories"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      },
+      "put": {
+        "summary": "update_category",
+        "operationId": "update_category",
+        "tags": [
+          "Categories"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CategoryUpdateRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "delete_category",
+        "operationId": "delete_category",
+        "tags": [
+          "Categories"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "删除成功"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/categories/root": {
+      "get": {
+        "summary": "get_root_categories",
+        "operationId": "get_root_categories",
+        "tags": [
+          "Categories"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        }
+      }
+    },
+    "/categories/{id}/children": {
+      "get": {
+        "summary": "get_subcategories",
+        "operationId": "get_subcategories",
+        "tags": [
+          "Categories"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CategoryResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/products": {
+      "post": {
+        "summary": "create_product",
+        "operationId": "create_product",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductCreateRequest"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "get_all_products",
+        "operationId": "get_all_products",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "summary": "get_product",
+        "operationId": "get_product",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      },
+      "put": {
+        "summary": "update_product",
+        "operationId": "update_product",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductUpdateRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "delete_product",
+        "operationId": "delete_product",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "删除成功"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/products/category/{id}": {
+      "get": {
+        "summary": "get_products_by_category",
+        "operationId": "get_products_by_category",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/products/search": {
+      "post": {
+        "summary": "search_products",
+        "operationId": "search_products",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/products/{id}/stock": {
+      "put": {
+        "summary": "update_product_stock",
+        "operationId": "update_product_stock",
+        "tags": [
+          "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateStockRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/orders": {
+      "post": {
+        "summary": "create_order",
+        "operationId": "create_order",
+        "tags": [
+          "Orders"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderCreateRequest"
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "get_all_orders",
+        "operationId": "get_all_orders",
+        "tags": [
+          "Orders"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        }
+      }
+    },
+    "/orders/{id}": {
+      "get": {
+        "summary": "get_order",
+        "operationId": "get_order",
+        "tags": [
+          "Orders"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      },
+      "delete": {
+        "summary": "delete_order",
+        "operationId": "delete_order",
+        "tags": [
+          "Orders"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "删除成功"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/orders/user/{id}": {
+      "get": {
+        "summary": "get_orders_by_user",
+        "operationId": "get_orders_by_user",
+        "tags": [
+          "Orders"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/orders/user/{id}/history": {
+      "get": {
+        "summary": "get_user_order_history",
+        "operationId": "get_user_order_history",
+        "tags": [
+          "Orders"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/orders/{id}/status": {
+      "put": {
+        "summary": "update_order_status",
+        "operationId": "update_order_status",
+        "tags": [
+          "Orders"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrderStatusRequest"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/orders/{id}/items": {
+      "get": {
+        "summary": "get_order_items",
+        "operationId": "get_order_items",
+        "tags": [
+          "Orders"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrderItemResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/orders/{id}/total": {
+      "get": {
+        "summary": "get_order_total",
+        "operationId": "get_order_total",
+        "tags": [
+          "Orders"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "路径参数: id"
+          }
+        ]
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "health_check",
+        "operationId": "health_check",
+        "tags": [
+          "Health"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "root",
+        "operationId": "root",
+        "tags": [
+          "Default"
+        ],
+        "responses": {
+          "200": {
+            "description": "成功响应",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "请求错误"
+          },
+          "500": {
+            "description": "服务器错误"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserCreateRequest": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "$ref": "#/components/schemas/EmailStr"
+          },
+          "password": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "UserUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "UserResponse": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "integer"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "user_id",
+          "username",
+          "email",
+          "full_name",
+          "phone"
+        ]
+      },
+      "CategoryCreateRequest": {
+        "type": "object",
+        "properties": {
+          "category_name": {
+            "type": "string"
+          },
+          "parent_id": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "CategoryUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "category_name": {
+            "type": "string"
+          },
+          "parent_id": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "CategoryResponse": {
+        "type": "object",
+        "properties": {
+          "category_id": {
+            "type": "integer"
+          },
+          "category_name": {
+            "type": "string"
+          },
+          "parent_id": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "category_id",
+          "category_name",
+          "parent_id",
+          "description"
+        ]
+      },
+      "ProductCreateRequest": {
+        "type": "object",
+        "properties": {
+          "product_name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "category_id": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "stock_quantity": {
+            "type": "integer"
+          }
+        },
+        "required": []
+      },
+      "ProductUpdateRequest": {
+        "type": "object",
+        "properties": {
+          "product_name": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "category_id": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "stock_quantity": {
+            "type": "integer"
+          }
+        },
+        "required": []
+      },
+      "ProductResponse": {
+        "type": "object",
+        "properties": {
+          "product_id": {
+            "type": "integer"
+          },
+          "product_name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "stock_quantity": {
+            "type": "integer"
+          },
+          "category_id": {
+            "type": "integer"
+          },
+          "category_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "product_id",
+          "product_name",
+          "description",
+          "price",
+          "stock_quantity",
+          "category_id"
+        ]
+      },
+      "OrderItemRequest": {
+        "type": "object",
+        "properties": {
+          "product_id": {
+            "type": "integer"
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "unit_price": {
+            "type": "number"
+          }
+        },
+        "required": []
+      },
+      "OrderCreateRequest": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "integer"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "shipping_address": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "OrderResponse": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "integer"
+          },
+          "total_amount": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string"
+          },
+          "shipping_address": {
+            "type": "string"
+          },
+          "order_date": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "order_id",
+          "user_id",
+          "total_amount",
+          "status",
+          "shipping_address"
+        ]
+      },
+      "OrderItemResponse": {
+        "type": "object",
+        "properties": {
+          "order_item_id": {
+            "type": "integer"
+          },
+          "order_id": {
+            "type": "integer"
+          },
+          "product_id": {
+            "type": "integer"
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "unit_price": {
+            "type": "number"
+          },
+          "subtotal": {
+            "type": "number"
+          },
+          "product_name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "order_item_id",
+          "order_id",
+          "product_id",
+          "quantity",
+          "unit_price"
+        ]
+      },
+      "ChangePasswordRequest": {
+        "type": "object",
+        "properties": {
+          "new_password": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "SearchRequest": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string"
+          }
+        },
+        "required": []
+      },
+      "UpdateStockRequest": {
+        "type": "object",
+        "properties": {
+          "stock_quantity": {
+            "type": "integer"
+          }
+        },
+        "required": []
+      },
+      "UpdateOrderStatusRequest": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        },
+        "required": []
+      }
+    }
+  }
+}
